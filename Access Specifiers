@@ -1,0 +1,125 @@
+There are 3 access specifiers in c++ OOPs
+(i)Public-Can be accessed from anywhere outside the class.
+(ii)Private-Can not be accessed outside the class.
+(iii)Protected-Used in inheritance
+private
+
+Anything declared inside private: can only be accessed by the class itself.
+
+Example:
+
+class BankAccount
+{
+private:
+    int balance;
+};
+
+Now in main():
+
+BankAccount acc;
+
+acc.balance = 100;
+
+❌ Error!
+
+Because balance is private.
+
+public
+
+Anything inside public: can be accessed from anywhere.
+
+Example
+
+class BankAccount
+{
+public:
+    string owner;
+};
+
+Now
+
+BankAccount acc;
+
+acc.owner = "Ishan";
+
+cout << acc.owner;
+
+Output
+
+Ishan
+
+Works perfectly.
+
+Why do we hide data?
+
+Suppose balance is public.
+
+class BankAccount
+{
+public:
+    int balance;
+};
+
+Now someone can do
+
+BankAccount acc;
+
+acc.balance = -500000;
+
+Now the account has negative money.
+
+That makes no sense.
+
+Instead
+
+class BankAccount
+{
+private:
+    int balance;
+};
+
+Only the class itself can change it.
+
+The user must request:
+
+Deposit 500
+Withdraw 200
+
+The class decides if that's allowed.
+
+This concept is called encapsulation—keeping data safe by controlling access.
+
+Example
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+
+private:
+    int marks;
+};
+
+int main()
+{
+    Student s;
+
+    s.name = "Ishan";
+
+    cout << s.name << endl;
+
+    s.marks = 95;
+}
+
+Error:
+
+'marks' is private within this context
+
+because
+
+private:
+    int marks;
+
+cannot be accessed outside the class.
