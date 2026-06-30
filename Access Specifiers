@@ -139,3 +139,37 @@ int main(){
     C1.age=20;
     cout<<C1.owner<<" "<<C1.age;
 }
+Class is a user defined data type , it is a blue print for creating objects.
+class bank{
+public :
+string owner;
+int age;
+private:
+int balance=9999999;// This is a class .
+ bank C1; this is an object.
+
+#include<iostream>
+using namespace std;
+class bank{
+private:
+int balance=9999999;
+public:
+string owner;
+int age;
+void setbalance(){
+    cout<<balance<<endl;
+}
+};
+int main(){
+    bank C1;
+    C1.owner="Ishan";
+    C1.age=20;
+    cout<<C1.owner<<" "<<C1.age;
+    C1.setbalance();
+}
+A function set password
+void get_balance(int pin){
+if(pin==123)
+return balance;
+return " ";
+}
