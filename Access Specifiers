@@ -123,3 +123,19 @@ private:
     int marks;
 
 cannot be accessed outside the class.
+My example 
+#include<iostream>
+using namespace std;
+class bank{
+public :
+string owner;
+int age;
+private:
+int balance=9999999;
+};
+int main(){
+    bank C1;
+    C1.owner="Ishan";
+    C1.age=20;
+    cout<<C1.owner<<" "<<C1.age;
+}
