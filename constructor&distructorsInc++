@@ -1,0 +1,254 @@
+What is a Constructor?
+
+A constructor is a special function that is called automatically when an object is created.
+
+Think of it like this:
+
+When a baby is born, it immediately gets a name, birth certificate, etc.
+
+Similarly, when an object is created, the constructor can initialize it.
+
+Without a constructor
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+    int age;
+};
+
+int main()
+{
+    Student s1;
+
+    s1.name = "Ishan";
+    s1.age = 20;
+
+    cout << s1.name << " " << s1.age;
+}
+
+Here, you create the object first, then assign values.
+
+With a constructor
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+    int age;
+
+    Student()
+    {
+        name = "Unknown";
+        age = 0;
+    }
+};
+
+int main()
+{
+    Student s1;
+
+    cout << s1.name << " " << s1.age;
+}
+
+Output:
+
+Unknown 0
+
+Notice something?
+
+You never called:
+
+Student();
+
+The compiler called it automatically when s1 was created.
+
+Why is it called a constructor?
+
+Because it constructs (initializes) the object.
+
+Rules for Constructors
+
+A constructor:
+
+Has the same name as the class.
+Has no return type (not even void).
+Is called automatically.
+
+Example:
+
+class Student
+{
+public:
+    Student()
+    {
+        cout << "Constructor Called";
+    }
+};
+
+Creating an object:
+
+Student s1;
+
+Output:
+
+Constructor Called
+Parameterized Constructor
+
+You can pass values while creating the object.
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+    int age;
+
+    Student(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
+};
+
+int main()
+{
+    Student s1("Ishan", 20);
+
+    cout << s1.name << " " << s1.age;
+}
+
+Output:
+
+Ishan 20
+
+This is much cleaner than assigning values after creation.
+
+What is a Destructor?
+
+A destructor is another special member function.
+
+It is called automatically when an object is destroyed.
+
+Think of it like cleaning up after you're done using something.
+
+Example:
+
+class Student
+{
+public:
+    Student()
+    {
+        cout << "Constructor\n";
+    }
+
+    ~Student()
+    {
+        cout << "Destructor\n";
+    }
+};
+int main()
+{
+    Student s1;
+}
+
+Output:
+
+Constructor
+Destructor
+
+Why?
+
+s1 is created → constructor runs.
+main() ends, s1 goes out of scope → destructor runs.
+Destructor Rules
+
+A destructor:
+
+Has the same name as the class.
+Starts with ~.
+Has no return type.
+Takes no parameters.
+Is called automatically.
+
+Example:
+
+~Student()
+{
+}
+Constructor vs Destructor
+Constructor	Destructor
+Called when an object is created	Called when an object is destroyed
+Initializes the object	Cleans up resources
+Same name as the class	Same name with ~ before it
+Can have parameters	Cannot have parameters
+Why are destructors useful?
+
+Suppose you allocate memory:
+
+Student *s = new Student;
+
+Later:
+
+delete s;
+
+When delete s; runs:
+
+The destructor executes.
+The memory is freed.
+
+That's why destructors are especially important when a class manages resources like dynamic memory, files, or network connections.
+
+Flow of execution
+Program Starts
+      │
+      ▼
+Student s1;
+      │
+      ▼
+Constructor Called
+      │
+      ▼
+Use Object
+      │
+      ▼
+Object Goes Out of Scope
+      │
+      ▼
+Destructor Called
+For now, remember these three ideas:
+Class = Blueprint
+Object = Instance of the blueprint
+Constructor = Automatically initializes the object when it's created.
+Destructor = Automatically cleans up when the object is destroyed.
+Quick Quiz 🧠
+
+What do you think this program prints?
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    Student()
+    {
+        cout << "Constructor\n";
+    }
+
+    ~Student()
+    {
+        cout << "Destructor\n";
+    }
+};
+
+int main()
+{
+    Student s1;
+    Student s2;
